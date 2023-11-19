@@ -9,6 +9,9 @@ services:
                 INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
                 TZ: ${TZ-Asia/Shanghai}
         network_mode: "host"
+        ports:
+            - 10443:443
+            - 10080:80
         restart: always
         environment:
             - PUID=0
