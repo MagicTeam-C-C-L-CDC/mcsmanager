@@ -8,7 +8,7 @@ services:
             args:
                 INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
                 TZ: ${TZ-Asia/Shanghai}
-        network_mode: "host"
+        #network_mode: "host"
         ports:
             - 10443:443
             - 10080:80
@@ -21,7 +21,10 @@ services:
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/web/data:${INSTALL_PATH-/opt/docker-mcsm}/releases/web/data
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/web/logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/web/logs
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data/Config:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data/Config:ro
+        networks:
+            - traefik
         labels:
+            - "traefik.enable=true"
             - "traefik.http.routers.mcsmanager-secure.entrypoints=https"
             - "traefik.http.routers.mcsmanager-secure.rule=Host(`mcsmanager.creatopico.ru`)"
             - "traefik.http.routers.mcsmanager-secure.tls=true"
@@ -37,7 +40,7 @@ services:
             args:
                 INSTALL_PATH: ${INSTALL_PATH-/opt/docker-mcsm}
                 TZ: ${TZ-Asia/Shanghai}
-        network_mode: "host"
+        #network_mode: "host"
         restart: always
         environment:
             - PUID=0
@@ -47,3 +50,10 @@ services:
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs
             - /var/run/docker.sock:/var/run/docker.sock:ro
+        networks:
+            - traefik
+
+networks:
+  traefik:
+    name: traefik
+    external: true
