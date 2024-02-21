@@ -61,6 +61,7 @@ services:
             - "traefik.http.routers.mcsdaemon-secure.tls=true"
             - "traefik.http.routers.mcsdaemon-secure.tls.certresolver=cloudflare"
             - "traefik.http.routers.mcsdaemon-secure.service=mcsdaemon-secure"
+            - "traefik.http.services.mcsdaemon-secure.loadbalancer.server.port=24444"
 
 networks:
   traefik:
