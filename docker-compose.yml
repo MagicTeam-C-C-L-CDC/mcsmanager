@@ -1,7 +1,7 @@
 version: "3"
 services:
     mcsm-web:
-        container_name: mcsm-web
+        container_name: mcsmweb
         build:
             context: .
             dockerfile: dockerfile-web
@@ -33,7 +33,7 @@ services:
             - "traefik.http.services.mcsmanager-secure.loadbalancer.server.port=23333"
     
     mcsm-daemon:
-        container_name: mcsm-daemon
+        container_name: mcsmdaemon
         build:
             context: .
             dockerfile: dockerfile-daemon
