@@ -54,6 +54,14 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock:ro
         networks:
             - traefik
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.mcsmanagerdaemon-secure.entrypoints=https"
+            - "traefik.http.routers.mcsmanagerdaemon-secure.rule=Host(`mcsmanager.creatopico.ru`)"
+            - "traefik.http.routers.mcsmanagerdaemon-secure.tls=true"
+            - "traefik.http.routers.mcsmanagerdaemon-secure.tls.certresolver=cloudflare"
+            - "traefik.http.routers.mcsmanagerdaemon-secure.service=mcsmanagerdaemon-secure"
+            - "traefik.http.services.mcsmanagerdaemon-secure.loadbalancer.server.port=24444"
 
 networks:
   traefik:
