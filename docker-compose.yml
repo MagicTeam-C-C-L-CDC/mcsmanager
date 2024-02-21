@@ -52,16 +52,16 @@ services:
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/logs
             - /var/run/docker.sock:/var/run/docker.sock:ro
-        networks:
-            - traefik
-        labels:
-            - "traefik.enable=true"
-            - "traefik.http.routers.mcsdaemon-secure.entrypoints=https"
-            - "traefik.http.routers.mcsdaemon-secure.rule=Host(`mcsdaemon.creatopico.ru`)"
-            - "traefik.http.routers.mcsdaemon-secure.tls=true"
-            - "traefik.http.routers.mcsdaemon-secure.tls.certresolver=cloudflare"
-            - "traefik.http.routers.mcsdaemon-secure.service=mcsdaemon-secure"
-            - "traefik.http.services.mcsdaemon-secure.loadbalancer.server.port=24444"
+        #networks:
+        #     - traefik
+        # labels:
+        #     - "traefik.enable=true"
+        #     - "traefik.http.routers.mcsdaemon-secure.entrypoints=https"
+        #     - "traefik.http.routers.mcsdaemon-secure.rule=Host(`mcsdaemon.creatopico.ru`)"
+        #     - "traefik.http.routers.mcsdaemon-secure.tls=true"
+        #     - "traefik.http.routers.mcsdaemon-secure.tls.certresolver=cloudflare"
+        #     - "traefik.http.routers.mcsdaemon-secure.service=mcsdaemon-secure"
+        #     - "traefik.http.services.mcsdaemon-secure.loadbalancer.server.port=24444"
 
 networks:
   traefik:
