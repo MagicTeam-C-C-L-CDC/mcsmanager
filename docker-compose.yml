@@ -21,6 +21,14 @@ services:
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/web/data:${INSTALL_PATH-/opt/docker-mcsm}/releases/web/data
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/web/logs:${INSTALL_PATH-/opt/docker-mcsm}/releases/web/logs
             - ${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data/Config:${INSTALL_PATH-/opt/docker-mcsm}/releases/daemon/data/Config:ro
+        labels:
+            - "traefik.http.routers.mcsmanager-secure.entrypoints=https"
+            - "traefik.http.routers.mcsmanager-secure.rule=Host(`mcsmanager.creatopico.ru`)"
+            - "traefik.http.routers.mcsmanager-secure.tls=true"
+            - "traefik.http.routers.mcsmanager-secure.tls.certresolver=cloudflare"
+            - "traefik.http.routers.mcsmanager-secure.service=mcsmanager-secure"
+            - "traefik.http.services.mcsmanager-secure.loadbalancer.server.port=23333"
+    
     mcsm-daemon:
         container_name: mcsm-daemon
         build:
