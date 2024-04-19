@@ -1,6 +1,6 @@
 FROM node:14-slim
 ARG INSTALL_PATH=/opt/docker-mcsm
-ARG TZ=Asia/Shanghai
+ARG TZ=Europe/Moscow
 ENV TZ=${TZ}
 RUN sed -i -E 's/http:\/\/deb.debian.org/http:\/\/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update && apt install -y git
