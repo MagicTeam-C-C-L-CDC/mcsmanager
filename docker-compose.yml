@@ -26,7 +26,7 @@ services:
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.mcsmanager-secure.entrypoints=websecure"
-            - "traefik.http.routers.mcsmanager-secure.rule=Host(`mcsmanager.creatopico.ru`)"
+            - "traefik.http.routers.mcsmanager-secure.rule=Host(`mcsmanager.littleligr.ru`)"
             - "traefik.http.routers.mcsmanager-secure.tls=true"
             - "traefik.http.routers.mcsmanager-secure.tls.certresolver=cloudflare"
             - "traefik.http.routers.mcsmanager-secure.service=mcsmanager-secure"
@@ -57,7 +57,7 @@ services:
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.mcsdaemon-secure.entrypoints=websecure"
-            - "traefik.http.routers.mcsdaemon-secure.rule=Host(`mcsdaemon.creatopico.ru`)"
+            - "traefik.http.routers.mcsdaemon-secure.rule=Host(`mcsdaemon.littleligr.ru`)"
             - "traefik.http.routers.mcsdaemon-secure.tls=true"
             - "traefik.http.routers.mcsdaemon-secure.tls.certresolver=cloudflare"
             - "traefik.http.routers.mcsdaemon-secure.service=mcsdaemon-secure"
